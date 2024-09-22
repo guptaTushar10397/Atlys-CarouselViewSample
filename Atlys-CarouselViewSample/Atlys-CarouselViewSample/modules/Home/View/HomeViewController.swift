@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
 private extension HomeViewController {
     
     func setupCarouselView() {
-        carouselView = CarouselView(frame: carouselContainerView.frame, images: images)
+        carouselView = CarouselView(frame: carouselContainerView.bounds, images: images)
         carouselContainerView.addSubview(carouselView)
     }
 }
