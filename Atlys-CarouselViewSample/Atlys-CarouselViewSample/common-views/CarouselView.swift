@@ -16,8 +16,8 @@ class CarouselView: UIView {
     init(frame: CGRect, images: [String]) {
         self.images = images
         super.init(frame: frame)
-        setupScrollView()
         setupPageControl()
+        setupScrollView()
         setupContent()
     }
     
@@ -70,7 +70,7 @@ private extension CarouselView {
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30)
+            scrollView.bottomAnchor.constraint(equalTo: pageControl.topAnchor)
         ])
     }
     
@@ -136,7 +136,7 @@ private extension CarouselView {
             last.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         }
         
-        scrollView.contentSize = CGSize(width: CGFloat(images.count) * cardSize, height: frame.height)
+        scrollView.contentSize = CGSize(width: CGFloat(images.count) * cardSize, height: scrollView.bounds.height)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.setInitialContentOffset()
