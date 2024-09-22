@@ -9,9 +9,24 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet private weak var carouselContainerView: UIView!
+    
+    private let images: [String] = ["image1", "image2", "image3", "image4"]
+    private var carouselView: CarouselView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
+        
+        setupCarouselView()
     }
 }
 
+// MARK: - Private Methods
+private extension HomeViewController {
+    
+    func setupCarouselView() {
+        carouselView = CarouselView(frame: carouselContainerView.frame, images: images)
+        carouselContainerView.addSubview(carouselView)
+    }
+}
