@@ -34,14 +34,21 @@ extension CarouselView: UIScrollViewDelegate {
     }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let targetX = targetContentOffset.pointee.x
-
         if velocity.x > 0 {
             currentPageIndex = min(currentPageIndex + 1, images.count - 1)
         } else if velocity.x < 0 {
             currentPageIndex = max(currentPageIndex - 1, 0)
-        } else {
-            currentPageIndex = Int(round(targetX / cardSize))
+        }
+        else {
+            let centerX = scrollView.center.x + scrollView.contentOffset.x
+            scrollView.subviews.forEach { cardView in
+                let distanceFromCenter = centerX - cardView.center.x
+                let thresholdDistance = cardSize / 2
+                
+                if abs(distanceFromCenter) <= thresholdDistance {
+                    currentPageIndex = Int(floor(centerX / cardSize))
+                }
+            }
         }
 
         let newOffsetX = CGFloat(currentPageIndex) * cardSize - (frame.width - cardSize) / 2
