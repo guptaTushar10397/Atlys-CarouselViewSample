@@ -70,7 +70,7 @@ private extension CarouselView {
         scrollView.isPagingEnabled = false
         scrollView.decelerationRate = .fast
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: cardSize / 2, bottom: 0, right: cardSize / 2)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: cardSize, bottom: 0, right: cardSize)
         addSubview(scrollView)
         
         NSLayoutConstraint.activate([
