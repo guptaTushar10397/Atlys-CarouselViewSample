@@ -1,6 +1,6 @@
 //
 //  CarouselView.swift
-//  Atlys-CarouselViewSample
+//  CarouselViewSample
 //
 //  Created by Tushar Gupta on 22/09/24.
 //
